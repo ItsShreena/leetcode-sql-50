@@ -83,7 +83,7 @@ ANSWER:
 SELECT v.customer_id,#selecting visits ka customerid
 COUNT(*) AS count_no_trans #counts every row doesnt care about NULL values
 FROM Visits v #tells sql to start from visits table
-LEFT JOIN Transactions t  Attach the Transactions table to the Visits table.
+LEFT JOIN Transactions t #Attach the Transactions table to the Visits table.
 ON v.visit_id = t.visit_id #This tells SQL how to match the two tables.
 WHERE t.transaction_id IS NULL #Now SQL removes every row where a transaction exists.
 GROUP BY v.customer_id;

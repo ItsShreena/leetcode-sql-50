@@ -45,3 +45,9 @@ The followers of 2 are {0,1}
 
 
 ANSWER:
+# Write your MySQL query statement below
+SELECT user_id,#display
+COUNT(follower_id)AS followers_count#counts how many followers each user has.
+FROM Followers#Read data from the Followers table
+GROUP BY user_id#Group all rows belonging to the same user.
+ORDER BY user_id;#sort in ascending order

@@ -63,5 +63,16 @@ Output:
 | null |
 +------+
 Explanation: There are no single numbers in the input table so we return null.
+
+
  
 ANSWER:
+# Write your MySQL query statement below
+SELECT max(num)AS num#since in all numbers we want largest single number...MAX automatically returns null if no single number
+FROM(
+    SELECT num#take num
+    FROM MyNumbers#from table
+    GROUP BY num#Group identical numbers together.
+    HAVING COUNT(*)=1#Keep only groups that contain exactly one row.
+)
+AS SingleNumbers;#Give the temporary table a name

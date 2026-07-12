@@ -49,3 +49,8 @@ Explanation:
 
 
 ANSWER:
+# Write your MySQL query statement below
+SELECT Class# column to display
+FROM Courses #table
+GROUP BY Class #Group all rows that belong to the same class.
+HAVING COUNT(student)>=5;#segregating by students having class i.e math the most ....HAVING filters groups, not individual rows.

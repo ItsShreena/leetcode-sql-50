@@ -58,3 +58,18 @@ Output:
 +-------------+
 Explanation: 
 The customers who bought all the products (5 and 6) are customers with IDs 1 and 3.
+
+
+
+ANSWER:
+
+# Write your MySQL query statement below
+SELECT customer_id#display id
+FROM Customer#from this data
+GROUP BY customer_id#Group all purchases made by customers
+HAVING COUNT(DISTINCT product_key)=#This counts how many different products each customer bought.
+(
+    SELECT COUNT(*)#counting all rows total no. of products
+    FROM Product#from product table using it
+)
+

@@ -62,3 +62,10 @@ Cat queries poor_ query_percentage is (1 / 3) * 100 = 33.33
 
 
 ANSWER:
+# Write your MySQL query statement below
+SELECT query_name,#display the query name
+ROUND(AVG(rating /position),2 )AS quality,#round used for rounding 2 decimal places,...rating/position ka meaning to calculate avg of them by multiplying,and rename the column as quality
+ROUND#round the poor percentage
+(AVG(rating <3)*100,2)AS poor_query_percentage#So this is a shortcut for calculating the percentage of poor queries. and nameit poor_query_percentage
+FROM Queries#read the data from queries table
+GROUP BY query_name;#process each query seperately 

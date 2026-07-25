@@ -101,3 +101,21 @@ Alice attended the Math exam 3 times, the Physics exam 2 times, and the Programm
 Bob attended the Math exam 1 time, the Programming exam 1 time, and did not attend the Physics exam.
 Alex did not attend any exams.
 John attended the Math exam 1 time, the Physics exam 1 time, and the Programming exam 1 time.
+
+ANSWER:
+SELECT
+ s.student_id,s.student_name,sub.subject_name,#select all three columns of input
+COUNT(e.subject_name)AS attended_exams#count ignores null so count how many matching exam records exist
+FROM Students  s#student table
+CROSS JOIN Subjects sub#This creates every possible student-subject pair i.e 4 students 3 subject so it creates 4*3=12 rows
+#This is necessary because the problem asks for every student and every subject, even if no exam was taken.
+LEFT JOIN Examinations e#Use LEFT JOIN because we still want rows where no exam exists.
+ON s.student_id =e.student_id#match the same output
+AND sub.subject_name=e.subject_name#also match the same outputs for subject and subject name
+GROUP BY #group by subject student method
+s.student_id,
+s.student_name,
+sub.subject_name
+ORDER BY 
+s.student_id,
+sub.subject_name;#ordering by name and id which comes first

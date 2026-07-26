@@ -45,6 +45,22 @@ Output:
 
 
 ANSWER:
+# Write your MySQL query statement below
+SELECT #choose a column to display
+DATE_FORMAT(trans_date, '%Y-%m')AS month,#here it statses to extract only year and month from trans date..so we group by months instead of individuals
+country,#display country
+COUNT(*)AS trans_count,#count every transaction in the group 
+SUM(state='approved' )AS approved_count,#if state approved and then taken all approved or declined and then we do sum
+SUM(amount)AS trans_total_amount,#add all transaction amounts
+SUM(CASE 
+WHEN state='approved'THEN amount 
+ELSE 0
+END)#all approved amounts are added only
+AS approved_total_amount#name this
+FROM Transactions#read the data from transactions table 
+GROUP BY 
+DATE_FORMAT(trans_date,'%Y-%m'),
+country;#Create one group for every combination of: Month,Country
 
+THIS IS A MEDIUM LEVEL QUESTION OF SQL AND CAN CONFUSE YOU A LITTLE IN BEGINNING SO TRY TO UNDERSTAND THE QUESTION FIRST
 
-ANSWRN
